@@ -117,3 +117,18 @@ offset_left = 368.0
 offset_right = 398.0
 offset_bottom = 80.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_onqjq")
+
+[node name="Player" type="AudioStreamPlayer2D" parent="." unique_id=1246453898]
+
+[connection signal="pressed" from="Keyboard/WhiteKeys/C" to="." method="_on_c_pressed"]
+[connection signal="pressed" from="Keyboard/WhiteKeys/D" to="." method="_on_d_pressed"]
+[connection signal="pressed" from="Keyboard/WhiteKeys/E" to="." method="_on_e_pressed"]
+[connection signal="pressed" from="Keyboard/WhiteKeys/F" to="." method="_on_f_pressed"]
+[connection signal="pressed" from="Keyboard/WhiteKeys/G" to="." method="_on_g_pressed"]
+[connection signal="pressed" from="Keyboard/WhiteKeys/A" to="." method="_on_a_pressed"]
+[connection signal="pressed" from="Keyboard/WhiteKeys/B" to="." method="_on_b_pressed"]
+[connection signal="pressed" from="Keyboard/BlackKeys/Cs" to="." method="_on_cs_pressed"]
+[connection signal="pressed" from="Keyboard/BlackKeys/Ds" to="." method="_on_ds_pressed"]
+[connection signal="pressed" from="Keyboard/BlackKeys/Fs" to="." method="_on_fs_pressed"]
+[connection signal="pressed" from="Keyboard/BlackKeys/Gs" to="." method="_on_gs_pressed"]
+[connection signal="pressed" from="Keyboard/BlackKeys/As" to="." method="_on_as_pressed"]
