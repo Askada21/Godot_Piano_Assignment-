@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://cr47k6balxymh"]
 
+[ext_resource type="Script" uid="uid://6sketfaucrk4" path="res://piano.gd" id="1_onqjq"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3umd"]
 content_margin_left = 4.0
 content_margin_top = 4.0
@@ -25,6 +27,7 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [node name="Piano" type="Node2D" unique_id=1472691599]
+script = ExtResource("1_onqjq")
 
 [node name="Keyboard" type="Control" parent="." unique_id=1215975832]
 layout_mode = 3
