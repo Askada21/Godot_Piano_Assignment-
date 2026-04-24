@@ -1,6 +1,5 @@
 extends Node2D
 
-# single note player (or you can spawn many)
 var note_paths = {
 	# white keys
 	"C":  "res://sounds/C.wav",
@@ -12,14 +11,13 @@ var note_paths = {
 	"B":  "res://sounds/B.wav",
 
 	# black keys
-	"Cs": "res://sounds/Cs.wav", # C#
-	"Ds": "res://sounds/Ds.wav", # D#
-	"Fs": "res://sounds/Fs.wav", # F#
-	"Gs": "res://sounds/Gs.wav", # G#
-	"As": "res://sounds/As.wav"  # A#
+	"Cs": "res://sounds/Cs.wav",
+	"Ds": "res://sounds/Ds.wav",
+	"Fs": "res://sounds/Fs.wav",
+	"Gs": "res://sounds/Gs.wav",
+	"As": "res://sounds/As.wav"
 }
 
-# keyboard mapping
 var key_map = {
 	KEY_A: "C",
 	KEY_W: "Cs",
@@ -35,8 +33,6 @@ var key_map = {
 	KEY_J: "B"
 }
 
-
-	
 func play_note(note):
 	var p = AudioStreamPlayer.new()
 	add_child(p)
@@ -44,57 +40,49 @@ func play_note(note):
 	p.play()
 	p.finished.connect(p.queue_free)
 
-#handle keyboard from PC/mobile
+	var visualizer = get_node_or_null("Visualizer")
+	if visualizer:
+		visualizer.pulse_note(note)
+		
+# handle keyboard from PC/mobile
 func _input(event):
-	if event is InputEventKey and event.pressed:
-		if event.keycode in key_map:
+	if event is InputEventKey and event.pressed and not event.echo:
+		if key_map.has(event.keycode):
 			play_note(key_map[event.keycode])
 
-#handle touch/click
+# handle touch/click
 func _on_c_pressed() -> void:
 	play_note("C")
 
 func _on_d_pressed() -> void:
 	play_note("D")
 
-
 func _on_e_pressed() -> void:
 	play_note("E")
-	
-
 
 func _on_f_pressed() -> void:
 	play_note("F")
 
-
 func _on_g_pressed() -> void:
 	play_note("G")
-	
-
 
 func _on_a_pressed() -> void:
 	play_note("A")
 
-
 func _on_b_pressed() -> void:
 	play_note("B")
-
 
 func _on_cs_pressed() -> void:
 	play_note("Cs")
 
-
 func _on_ds_pressed() -> void:
 	play_note("Ds")
-
 
 func _on_fs_pressed() -> void:
 	play_note("Fs")
 
-
 func _on_gs_pressed() -> void:
 	play_note("Gs")
-
 
 func _on_as_pressed() -> void:
 	play_note("As")
