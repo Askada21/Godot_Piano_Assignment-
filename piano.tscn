@@ -29,6 +29,77 @@ corner_detail = 5
 [node name="Piano" type="Node2D" unique_id=1472691599]
 script = ExtResource("1_onqjq")
 
+[node name="Visualizer" type="Control" parent="." unique_id=2140253119]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bars" type="Control" parent="Visualizer" unique_id=18753228]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bar0" type="ColorRect" parent="Visualizer/Bars" unique_id=1961838823]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bar1" type="ColorRect" parent="Visualizer/Bars" unique_id=1360554628]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bar2" type="ColorRect" parent="Visualizer/Bars" unique_id=512110869]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bar3" type="ColorRect" parent="Visualizer/Bars" unique_id=1181836716]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bar4" type="ColorRect" parent="Visualizer/Bars" unique_id=1825645534]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bar5" type="ColorRect" parent="Visualizer/Bars" unique_id=636488408]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bar6" type="ColorRect" parent="Visualizer/Bars" unique_id=1985951858]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bar7" type="ColorRect" parent="Visualizer/Bars" unique_id=1128088973]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bar8" type="ColorRect" parent="Visualizer/Bars" unique_id=570529070]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bar9" type="ColorRect" parent="Visualizer/Bars" unique_id=940088481]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bar10" type="ColorRect" parent="Visualizer/Bars" unique_id=392690257]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Bar11" type="ColorRect" parent="Visualizer/Bars" unique_id=1404514846]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Keyboard" type="Control" parent="." unique_id=1215975832]
 layout_mode = 3
 anchors_preset = 0
