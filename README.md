@@ -33,16 +33,27 @@ The project combines audio playback, user input, UI controls, and visual feedbac
 # Controls
 Use the keyboard or mouse to play notes.
 A  → C
+
 W  → C#
+
 S  → D
+
 E  → D#
+
 D  → E
+
 F  → F
+
 T  → F#
+
 G  → G
+
 Y  → G#
+
 H  → A
+
 U  → A#
+
 J  → B
 
 # UI 
