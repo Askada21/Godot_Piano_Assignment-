@@ -82,4 +82,4 @@ J  → B
 This project demonstrates how to build an interactive music application using Godot, combining sound, UI, and visuals into a single system.
 
 # Demo Video
-Coming soon
+https://youtu.be/E1ZOBZkwkXY
