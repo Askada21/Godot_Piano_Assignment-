@@ -1,9 +1,12 @@
 extends Node2D
 
-@onready var volume_slider = $UI/VolumeSlider
-@onready var pitch_slider = $UI/PitchSlider
-@onready var melody_timer = $MelodyTimer
 
+# These variables find nodes in the scene automatically when the game starts
+@onready var volume_slider = $UI/VolumeSlider # slider that controls loudness
+@onready var pitch_slider = $UI/PitchSlider # slider that controls pitch
+@onready var melody_timer = $MelodyTimer # timer for automatic melody
+
+# Sound file paths
 var note_paths = {
 	"C":  "res://sounds/C.wav",
 	"D":  "res://sounds/D.wav",
@@ -20,6 +23,7 @@ var note_paths = {
 	"As": "res://sounds/As.wav"
 }
 
+# Notes
 var key_map = {
 	KEY_A: "C",
 	KEY_W: "Cs",
@@ -35,34 +39,48 @@ var key_map = {
 	KEY_J: "B"
 }
 
+# List of notes used for automatic melody
 var melody_pattern = ["C", "D", "E", "G", "A", "G", "E", "D"]
+# Keeps track of which note we are on in the melody
 var melody_index = 0
 
+# Function: plays a note
 func play_note(note):
+	# Create a new audio player
 	var p = AudioStreamPlayer.new()
 	add_child(p)
 
+	# Load the sound file for this note; set volume; set pitch
 	p.stream = load(note_paths[note])
 	p.volume_db = linear_to_db(volume_slider.value)
 	p.pitch_scale = pitch_slider.value
 
+	# Play the sound
 	p.play()
 	p.finished.connect(p.queue_free)
 
+	# Find the visualizer bars
 	var visualizer = get_node_or_null("Visualizer")
+	# If it exists => tell it to animate this note
 	if visualizer:
 		visualizer.pulse_note(note)
 
 func _input(event):
+	# Check if key is pressed
 	if event is InputEventKey and event.pressed and not event.echo:
+		# If this key exists in our map
 		if key_map.has(event.keycode):
 			play_note(key_map[event.keycode])
 
+# Plays the next note in the melody list
 func play_next_melody_note():
+	# Get current note from list
 	var note = melody_pattern[melody_index]
 	play_note(note)
 
+	# Move to next note
 	melody_index += 1
+	# If we reach end => go back to start
 	if melody_index >= melody_pattern.size():
 		melody_index = 0
 

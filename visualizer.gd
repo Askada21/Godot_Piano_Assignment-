@@ -4,6 +4,7 @@ extends Control
 
 var energies: Array[float] = []
 
+# This dictionary connects each note to a bar number
 var note_to_bar = {
 	"C": 0,
 	"Cs": 1,
@@ -19,11 +20,14 @@ var note_to_bar = {
 	"B": 11
 }
 
+# It tells the script which note belongs to each bar
 var bar_to_note = [
 	"C", "Cs", "D", "Ds", "E", "F",
 	"Fs", "G", "Gs", "A", "As", "B"
 ]
 
+# This controls the horizontal position of each note bar
+# Change these numbers to move individual bars left or right
 var note_x = {
 	"C": 0,
 	"Cs": 25,
@@ -39,6 +43,7 @@ var note_x = {
 	"B": 280
 }
 
+# Colors for the 12 visualizer bars.
 var bar_colors = [
 	Color("ff4d4dff"),
 	Color("ff804dff"),
@@ -60,12 +65,16 @@ const MAX_HEIGHT := 140.0
 const TOP_MARGIN := 90.0
 const LEFT_MARGIN := 20.0
 
+# This runs once when the game starts
 func _ready():
+	# Make the energies array the same size as the number of bars
 	energies.resize(bars.size())
 
 	for i in range(bars.size()):
+		# Start each bar with no energy
 		energies[i] = 0.0
 
+		# Get the current bar
 		var bar = bars[i]
 
 		if bar is ColorRect:
