@@ -544,8 +544,12 @@ value = 1.0
 
 [node name="PitchSlider" type="HSlider" parent="UI" unique_id=1857537859]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 16.0
+offset_left = 7.0
+offset_top = 23.0
+offset_right = 123.0
+offset_bottom = 39.0
+max_value = 2.0
+value = 2.0
 
 [node name="MelodyButton" type="Button" parent="UI" unique_id=95301415]
 layout_mode = 0
@@ -555,6 +559,25 @@ offset_right = 130.0
 offset_bottom = -3.0
 text = "Play Melody Note
 "
+
+[node name="StartButton" type="Button" parent="UI" unique_id=52295201]
+layout_mode = 0
+offset_left = 148.0
+offset_top = -50.0
+offset_right = 255.0
+offset_bottom = -19.0
+text = "Start Melody"
+
+[node name="StopButton" type="Button" parent="UI" unique_id=1118694584]
+layout_mode = 0
+offset_left = 155.0
+offset_top = -9.0
+offset_right = 259.0
+offset_bottom = 22.0
+text = "Stop Melody"
+
+[node name="MelodyTimer" type="Timer" parent="." unique_id=1165926571]
+wait_time = 0.4
 
 [node name="Player" type="AudioStreamPlayer2D" parent="." unique_id=1246453898]
 
@@ -570,3 +593,7 @@ text = "Play Melody Note
 [connection signal="pressed" from="Keyboard/BlackKeys/Fs" to="." method="_on_fs_pressed"]
 [connection signal="pressed" from="Keyboard/BlackKeys/Gs" to="." method="_on_gs_pressed"]
 [connection signal="pressed" from="Keyboard/BlackKeys/As" to="." method="_on_as_pressed"]
+[connection signal="pressed" from="UI/MelodyButton" to="." method="_on_melody_button_pressed"]
+[connection signal="pressed" from="UI/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="UI/StopButton" to="." method="_on_stop_button_pressed"]
+[connection signal="timeout" from="MelodyTimer" to="." method="_on_melody_timer_timeout"]

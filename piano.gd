@@ -1,7 +1,10 @@
 extends Node2D
 
+@onready var volume_slider = $UI/VolumeSlider
+@onready var pitch_slider = $UI/PitchSlider
+@onready var melody_timer = $MelodyTimer
+
 var note_paths = {
-	# white keys
 	"C":  "res://sounds/C.wav",
 	"D":  "res://sounds/D.wav",
 	"E":  "res://sounds/E.wav",
@@ -10,7 +13,6 @@ var note_paths = {
 	"A":  "res://sounds/A.wav",
 	"B":  "res://sounds/B.wav",
 
-	# black keys
 	"Cs": "res://sounds/Cs.wav",
 	"Ds": "res://sounds/Ds.wav",
 	"Fs": "res://sounds/Fs.wav",
@@ -33,24 +35,51 @@ var key_map = {
 	KEY_J: "B"
 }
 
+var melody_pattern = ["C", "D", "E", "G", "A", "G", "E", "D"]
+var melody_index = 0
+
 func play_note(note):
 	var p = AudioStreamPlayer.new()
 	add_child(p)
+
 	p.stream = load(note_paths[note])
+	p.volume_db = linear_to_db(volume_slider.value)
+	p.pitch_scale = pitch_slider.value
+
 	p.play()
 	p.finished.connect(p.queue_free)
 
 	var visualizer = get_node_or_null("Visualizer")
 	if visualizer:
 		visualizer.pulse_note(note)
-		
-# handle keyboard from PC/mobile
+
 func _input(event):
 	if event is InputEventKey and event.pressed and not event.echo:
 		if key_map.has(event.keycode):
 			play_note(key_map[event.keycode])
 
-# handle touch/click
+func play_next_melody_note():
+	var note = melody_pattern[melody_index]
+	play_note(note)
+
+	melody_index += 1
+	if melody_index >= melody_pattern.size():
+		melody_index = 0
+
+# UI button signals
+func _on_melody_button_pressed() -> void:
+	play_next_melody_note()
+
+func _on_start_button_pressed() -> void:
+	melody_timer.start()
+
+func _on_stop_button_pressed() -> void:
+	melody_timer.stop()
+
+func _on_melody_timer_timeout() -> void:
+	play_next_melody_note()
+
+# Piano key button signals
 func _on_c_pressed() -> void:
 	play_note("C")
 
