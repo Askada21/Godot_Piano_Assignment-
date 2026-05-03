@@ -81,5 +81,9 @@ J  → B
 # Summary
 This project demonstrates how to build an interactive music application using Godot, combining sound, UI, and visuals into a single system.
 
+# Future Improvements
+- Recording
+- Upload pictures of the playback system
+  
 # Demo Video
 https://youtu.be/E1ZOBZkwkXY
